@@ -14,9 +14,9 @@ setup(
             [os.path.join('resource', package_name)]),
         (os.path.join('share', package_name), glob('package.xml')),
         # Include all launch files
-        (os.path.join('share', package_name), glob('launch/*.py')),
-        (os.path.join('share', package_name), glob('urdf/*')),
-        (os.path.join('share', package_name), glob('meshes/*'))
+        (os.path.join('share', package_name, 'launch'), glob('launch/*.py')),
+        (os.path.join('share', package_name, 'urdf'), glob('urdf/*')),
+        (os.path.join('share', package_name, 'meshes'), glob('meshes/*'))
     ],
     install_requires=['setuptools'],
     zip_safe=True,
