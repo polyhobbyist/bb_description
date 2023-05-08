@@ -8,7 +8,7 @@
   <link name="base_link">
     <visual>
       <geometry>
-        <mesh filename="package://bb_description/meshes/skinny_dome.stl" scale="0.0001 0.0001 0.0001" />
+        <mesh filename="package://bb_description/meshes/dome.stl" scale="0.0001 0.0001 0.0001" />
       </geometry>
     </visual>
   </link>
