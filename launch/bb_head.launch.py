@@ -10,6 +10,7 @@ def generate_launch_description():
     urdf_file_name = 'bb_head.urdf'
     urdf = os.path.join(
         get_package_share_directory('bb_description'),
+        'urdf',
         urdf_file_name)
     with open(urdf, 'r') as infp:
         robot_desc = infp.read()
@@ -20,6 +21,6 @@ def generate_launch_description():
             executable='robot_state_publisher',
             name='robot_state_publisher',
             output='screen',
-            parameters=[{'use_sim_time': 'false', 'robot_description': robot_desc}],
+            parameters=[{'use_sim_time': False, 'robot_description': robot_desc}],
             arguments=[urdf])
     ])
