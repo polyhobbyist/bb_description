@@ -4,14 +4,50 @@
   <material name="red">
     <color rgba=".8 0 0 1"/>
   </material>
+  <material name="grey">
+    <color rgba=".3 .3 .3 1"/>
+  </material>
 
   <link name="base_link">
+  </link>
+
+  <link name="dome_link">
     <visual>
       <geometry>
         <mesh filename="package://bb_description/meshes/dome.stl" scale="0.001 0.001 0.001" />
       </geometry>
     </visual>
   </link>
+
+  <joint name="base_to_dome_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="dome_link"/>
+    <origin xyz="0 0 0" rpy="0 0 3.14159"/>
+  </joint>
+
+  <link name="sensor_dish_visual_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://bb_description/meshes/Radar.stl" scale="0.0009 0.0009 0.0009" />
+      </geometry>
+      <material name="grey"/>
+    </visual>
+  </link>
+
+  <link name="sensor_link">
+  </link>
+
+  <joint name="base_to_sensor_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="sensor_link"/>
+    <origin xyz=".00262 0.1104 0.0709" rpy="-1.028 0 0"/>
+  </joint>
+
+
+  <joint name="sensor_to_dish_visual_joint" type="fixed">
+    <parent link="sensor_link"/>
+    <child link="sensor_dish_visual_link"/>
+  </joint>
 
 
   <link name="camera_link">
@@ -20,12 +56,13 @@
         <box size="0.01 0.01 0.001"/>
       </geometry>
     </visual>
+    <origin rpy="0 0 1.570795"/>
   </link>
 
-  <joint name="dome_to_camera_joint" type="fixed">
-    <parent link="base_link"/>
+  <joint name="radar_to_camera_joint" type="fixed">
+    <parent link="sensor_link"/>
     <child link="camera_link"/>
-    <origin xyz="0 0.12 0.08" rpy="-1.047198 -0.125826 -3.047137"/>
+    <origin xyz="0 0 .002" rpy="0 0 0"/>
   </joint>
 
   <link name="front_depth_link">
@@ -38,9 +75,9 @@
   </link>
   
   <joint name="dome_to_front_depth_joint" type="fixed">
-    <parent link="base_link"/>
+    <parent link="sensor_link"/>
     <child link="front_depth_link"/>
-    <origin xyz="0 0.11 0.09" rpy="-1.047198 0 3.14159"/>
+    <origin xyz="0 -0.015 0.002" rpy="0 0 0"/>
   </joint>
 
   <link name="left_depth_link">
@@ -55,7 +92,7 @@
   <joint name="dome_to_left_depth_joint" type="fixed">
     <parent link="base_link"/>
     <child link="left_depth_link"/>
-    <origin xyz="0.122 -0.0715 0.008" rpy="0.5638 1.4933 1.563023"/>
+    <origin xyz="0.122 -0.0715 0.008" rpy="0.5638 1.616 0"/>
   </joint>
 
   <link name="right_depth_link">
@@ -70,7 +107,7 @@
   <joint name="dome_to_right_depth_joint" type="fixed">
     <parent link="base_link"/>
     <child link="right_depth_link"/>
-    <origin xyz="-0.122 -0.0715 0.008" rpy="0.5638 -1.4933 -1.563023"/>
+    <origin xyz="-0.122 -0.0715 0.008" rpy="0.5638 -1.616 0"/>
   </joint>
 
 
