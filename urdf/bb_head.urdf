@@ -4,6 +4,12 @@
   <material name="red">
     <color rgba=".8 0 0 1"/>
   </material>
+  <material name="green">
+    <color rgba="0 .8 0 1"/>
+  </material>
+  <material name="white">
+    <color rgba=".8 .8 .8 1"/>
+  </material>
   <material name="grey">
     <color rgba=".3 .3 .3 1"/>
   </material>
@@ -16,6 +22,7 @@
       <geometry>
         <mesh filename="package://bb_description/meshes/dome.stl" scale="0.001 0.001 0.001" />
       </geometry>
+      <material name="white"/>
     </visual>
   </link>
 
@@ -85,7 +92,8 @@
       <geometry>
         <box size="0.01 0.01 0.001"/>
       </geometry>
-      <material name="red"/>
+      <material name="green"/>
+      <origin xyz="0 0 0" rpy="0 0 3.1415"/>
     </visual>
   </link>
   
